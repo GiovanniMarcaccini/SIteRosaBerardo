@@ -1,0 +1,116 @@
+/* ============================================
+   CSS ISOLADO - REVISTAS MODESTO
+   ============================================
+   Todo CSS escopado dentro de .rb-revistas-area e .rb-revistas-elegance
+   Não afeta outras sections do site
+   ============================================ */
+
+/* ============================================
+   1. WRAPPER PRINCIPAL
+   ============================================ */
+.rb-revistas-area {
+    position: relative;
+    width: 100%;
+}
+
+.rb-revistas-elegance {
+    position: relative;
+    width: 100%;
+}
+
+/* ============================================
+   2. CARROSSEL NA HOME
+   ============================================ */
+.rb-revistas-area .homepage-14-container {
+    position: relative;
+    width: 100%;
+    min-height: 500px; /* Altura mínima para o carrossel na home */
+}
+
+.rb-revistas-area .homepage-14-slider {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Altura fixa para o carrossel na home */
+}
+
+.rb-revistas-area .homepage-14-slider .swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.rb-revistas-area .homepage-14-slider .swiper-slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 767px) {
+    .rb-revistas-area .homepage-14-container {
+        min-height: 400px;
+    }
+    
+    .rb-revistas-area .homepage-14-slider {
+        height: 400px;
+    }
+}
+
+/* ============================================
+   3. BOTÕES DE NAVEGAÇÃO
+   ============================================ */
+.rb-revistas-area .swiper-button-prev,
+.rb-revistas-area .swiper-button-next {
+    z-index: 10;
+}
+
+/* ============================================
+   4. PAGINAÇÃO MOBILE
+   ============================================ */
+.rb-revistas-area .swiper-pagination {
+    bottom: 20px;
+    z-index: 10;
+}
+
+/* ============================================
+   5. CARROSSEL EXQUISITE ELEGANCE (FULL HEIGHT)
+   ============================================ */
+.rb-revistas-elegance .page-height {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Full height como no template Modesto */
+}
+
+.rb-revistas-elegance .homepage-14-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+}
+
+.rb-revistas-elegance .homepage-14-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.rb-revistas-elegance .homepage-14-slider .swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.rb-revistas-elegance .homepage-14-slider .swiper-slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ajustes para mobile */
+@media (max-width: 767px) {
+    .rb-revistas-elegance .page-height {
+        min-height: 70vh;
+    }
+    
+    .rb-revistas-elegance .homepage-14-container {
+        height: 70vh;
+    }
+}
+

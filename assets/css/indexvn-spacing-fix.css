@@ -1,0 +1,195 @@
+/* ============================================
+   AJUSTES DE ESPAÇAMENTO - INDEXVN
+   Espaçamentos orgânicos e confortáveis
+   ============================================ */
+
+/* Reduzir espaçamentos excessivos entre seções principais */
+#rb-philosophy-section {
+    margin-bottom: 40px !important;
+}
+
+@media (min-width: 768px) {
+    #rb-philosophy-section {
+        margin-bottom: 60px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #rb-philosophy-section {
+        margin-bottom: 80px !important;
+    }
+}
+
+/* Ajustar espaçamento após carousel inicial */
+.page-height.responsive-initial {
+    margin-bottom: 0 !important;
+}
+
+.page-height.responsive-initial + #rb-philosophy-section {
+    padding-top: 40px;
+}
+
+@media (min-width: 768px) {
+    .page-height.responsive-initial + #rb-philosophy-section {
+        padding-top: 60px;
+    }
+}
+
+/* Reduzir espaçamentos grandes desnecessários */
+.empty-space.col-xs-b55.col-sm-b110 {
+    margin-bottom: 30px !important;
+}
+
+@media (min-width: 768px) {
+    .empty-space.col-xs-b55.col-sm-b110 {
+        margin-bottom: 50px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .empty-space.col-xs-b55.col-sm-b110 {
+        margin-bottom: 70px !important;
+    }
+}
+
+/* Ajustar espaçamento entre blocos left-right */
+.left-right-entry + .row {
+    margin-top: 0;
+}
+
+/* Reduzir espaçamento antes do Instagram */
+.wide-container-fluid .empty-space.col-xs-b55.col-sm-b110:last-of-type {
+    margin-bottom: 40px !important;
+}
+
+@media (min-width: 768px) {
+    .wide-container-fluid .empty-space.col-xs-b55.col-sm-b110:last-of-type {
+        margin-bottom: 60px !important;
+    }
+}
+
+/* Ajustar espaçamento entre seções de filmografia */
+#section-revistas-elegance {
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    #section-revistas-elegance {
+        margin-top: 60px;
+    }
+}
+
+/* Reduzir espaçamento excessivo antes de seções */
+.section + .container .empty-space.col-xs-b55.col-sm-b110:first-child {
+    margin-bottom: 30px !important;
+}
+
+@media (min-width: 768px) {
+    .section + .container .empty-space.col-xs-b55.col-sm-b110:first-child {
+        margin-bottom: 50px !important;
+    }
+}
+
+/* Ajustar espaçamento entre seções de imprensa */
+#revistas-home {
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    #revistas-home {
+        margin-top: 60px;
+    }
+}
+
+/* Reduzir espaçamento excessivo no container de contato */
+#contato-home .empty-space.col-xs-b25.col-sm-b50 {
+    margin-bottom: 20px !important;
+}
+
+@media (min-width: 768px) {
+    #contato-home .empty-space.col-xs-b25.col-sm-b50 {
+        margin-bottom: 30px !important;
+    }
+}
+
+/* Ajustar espaçamento interno dos blocos left-right */
+.left-right-entry .cell-view {
+    padding: 20px 0 !important;
+}
+
+@media (min-width: 768px) {
+    .left-right-entry .cell-view {
+        padding: 30px 0 !important;
+    }
+}
+
+/* Remover espaçamento duplicado entre seções */
+.wide-container-fluid.wide-paddings + .wide-container-fluid.wide-paddings {
+    margin-top: -20px;
+}
+
+/* Ajustar espaçamento após Instagram */
+.wide-container-fluid .empty-space.col-xs-b55.col-sm-b110:last-child {
+    margin-bottom: 40px !important;
+}
+
+@media (min-width: 768px) {
+    .wide-container-fluid .empty-space.col-xs-b55.col-sm-b110:last-child {
+        margin-bottom: 60px !important;
+    }
+}
+
+/* Espaçamento mais orgânico entre seções principais */
+section + section {
+    margin-top: 40px;
+}
+
+@media (min-width: 768px) {
+    section + section {
+        margin-top: 60px;
+    }
+}
+
+@media (min-width: 992px) {
+    section + section {
+        margin-top: 80px;
+    }
+}
+
+/* Ajustar espaçamento interno dos containers */
+.container .empty-space.col-xs-b55.col-sm-b110 {
+    margin-bottom: 30px !important;
+}
+
+@media (min-width: 768px) {
+    .container .empty-space.col-xs-b55.col-sm-b110 {
+        margin-bottom: 50px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .container .empty-space.col-xs-b55.col-sm-b110 {
+        margin-bottom: 70px !important;
+    }
+}
+
+/* Reduzir espaçamento excessivo antes de botões */
+.empty-space.col-xs-b35 {
+    margin-bottom: 20px !important;
+}
+
+/* Espaçamento mais compacto entre elementos relacionados */
+.left-right-entry {
+    margin-bottom: 0;
+}
+
+/* Ajustar espaçamento do título Instagram */
+.wide-container-fluid .row .h2.small b {
+    display: block;
+}
+
+/* Reduzir espaçamento excessivo antes de seções duplicadas */
+#rb-philosophy-section + #section-revistas-elegance {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}

@@ -1,0 +1,179 @@
+
+
+.homepage-1-container {
+  position: relative;
+  z-index: 2;
+}
+/* CONTEXTO DO HERO */
+/* CONTEXTO DO HERO */
+.page-height {
+  position: relative;
+  overflow: hidden;
+}
+
+/* FUNDO (como no Modesto original) */
+.homepage-1-backgrounds {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.homepage-1-backgrounds .entry {
+  background-size: cover;
+  background-position: center center;
+  transform: scale(1.2);
+  opacity: 0;
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.homepage-1-backgrounds .entry.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* CARD BRANCO */
+.homepage-1-container {
+  position: absolute;
+  inset: 60px;
+  background: #fff;
+  z-index: 1;
+}
+
+
+
+/* Header clean “WISO-like” (sem search/sem shop) */
+
+  
+  /* Responsivo */
+  @media (max-width: 820px){
+    .rb-nav{
+      flex-direction:column;
+      gap:14px;
+      padding:18px 14px;
+    }
+    .rb-menu{
+      flex-wrap:wrap;
+      gap:14px 18px;
+    }
+  }
+
+  /*-------------------------------------------------------------------------------------------------------------------------------*/
+/* 55 - CSS Menu Hamburger */
+/* Header clean */
+.rb-header{
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.rb-nav{
+  max-width:1100px;
+  margin:0 auto;
+  padding:26px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:42px;
+}
+
+.rb-logo{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 10px;
+}
+
+.rb-logo img{
+  display:block;
+  height:75px;
+  width:auto;
+}
+
+.rb-menu{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+  padding:60px 24px 5px 24px;
+}
+
+.rb-links{
+  display:flex;
+  gap:80px;
+  align-items:center;
+}
+
+.rb-menu a{
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:12px;
+  color:#111;
+}
+
+.rb-menu a.is-active{
+  text-decoration:underline;
+  text-underline-offset:8px;
+}
+
+/* Burger (mobile) */
+.rb-burger{
+  display:none;
+  width:42px;
+  height:42px;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+  padding:8px;
+}
+
+.rb-burger span{
+  display:block;
+  width:22px;
+  height:2px;
+  background:#111;
+  border-radius:2px;
+}
+
+/* Mobile dropdown (se você tiver esse HTML) */
+.rb-mobile-menu{
+  border-top:1px solid rgba(0,0,0,.08);
+  background:#fff;
+  padding:14px 18px;
+}
+
+.rb-mobile-menu a{
+  display:block;
+  padding:12px 6px;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-size:12px;
+  color:#111;
+}
+
+/* Breakpoint */
+@media (max-width: 991px){
+  .rb-links{ display:none; }
+  .rb-burger{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+  }
+}
+
+@media (max-width: 820px){
+  .rb-nav{
+    flex-direction:column;
+    gap:14px;
+    padding:18px 14px;
+  }
+  .rb-menu{
+    justify-content:space-between;
+    width:100%;
+  }
+}
+
+
+  /*-------------------------------------------------------------------------------------------------------------------------------*/
+ 

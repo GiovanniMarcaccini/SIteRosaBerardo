@@ -1,0 +1,624 @@
+/* ============================================
+   CSS ISOLADO - ÁREA WISO (indexvn.html)
+   ============================================
+   Todo CSS escopado dentro de .rb-wiso-area
+   Não afeta outras sections do site
+   ============================================ */
+
+/* ============================================
+   1. WRAPPER PRINCIPAL
+   ============================================ */
+.rb-wiso-area {
+    position: relative;
+    width: 100%;
+}
+
+/* ============================================
+   2. CLASSES DE ESPAÇAMENTO
+   ============================================ */
+.rb-wiso-area .margin-lg-105b { margin-bottom: 105px; }
+.rb-wiso-area .margin-lg-100t { margin-top: 100px; }
+.rb-wiso-area .margin-lg-100b { margin-bottom: 100px; }
+.rb-wiso-area .margin-lg-90b { margin-bottom: 90px; }
+.rb-wiso-area .margin-lg-80b { margin-bottom: 80px; }
+.rb-wiso-area .margin-lg-70t { margin-top: 70px; }
+.rb-wiso-area .margin-lg-70b { margin-bottom: 70px; }
+.rb-wiso-area .margin-lg-65t { margin-top: 65px; }
+.rb-wiso-area .margin-lg-50b { margin-bottom: 50px; }
+.rb-wiso-area .margin-lg-35b { margin-bottom: 35px; }
+
+.rb-wiso-area .margin-sm-40b { margin-bottom: 40px; }
+
+.rb-wiso-area .margin-md-90b { margin-bottom: 90px; }
+.rb-wiso-area .margin-md-80t { margin-top: 80px; }
+.rb-wiso-area .margin-md-80b { margin-bottom: 80px; }
+.rb-wiso-area .margin-md-70b { margin-bottom: 70px; }
+.rb-wiso-area .margin-md-50b { margin-bottom: 50px; }
+
+.rb-wiso-area .margin-sm-95b { margin-bottom: 95px; }
+.rb-wiso-area .margin-sm-70b { margin-bottom: 70px; }
+.rb-wiso-area .margin-sm-45t { margin-top: 45px; }
+.rb-wiso-area .margin-sm-30b { margin-bottom: 30px; }
+
+.rb-wiso-area .margin-xs-60b { margin-bottom: 60px; }
+.rb-wiso-area .margin-xs-55b { margin-bottom: 55px; }
+.rb-wiso-area .margin-xs-50b { margin-bottom: 50px; }
+.rb-wiso-area .margin-xs-40t { margin-top: 40px; }
+.rb-wiso-area .margin-xs-40b { margin-bottom: 40px; }
+.rb-wiso-area .margin-xs-30b { margin-bottom: 30px; }
+.rb-wiso-area .margin-xs-15t { margin-top: 15px; }
+.rb-wiso-area .margin-xs-10b { margin-bottom: 10px; }
+
+.rb-wiso-area .padding-lg-35t { padding-top: 35px; }
+
+/* ============================================
+   3. HEADINGS
+   ============================================ */
+.rb-wiso-area .headings-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.rb-wiso-area .headings {
+    text-align: center;
+    position: relative;
+}
+
+.rb-wiso-area .headings .icon {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 80px;
+    height: auto;
+}
+
+.rb-wiso-area .headings.classic_text .icon {
+    margin-bottom: 25px;
+}
+
+.rb-wiso-area .headings.text_link .icon {
+    margin-bottom: 30px;
+}
+
+.rb-wiso-area .headings .title {
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #222;
+    line-height: 1.2;
+}
+
+.rb-wiso-area .headings .subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.rb-wiso-area .headings.text_link .subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.rb-wiso-area .headings .link-wrap {
+    margin-top: 30px;
+}
+
+.rb-wiso-area .headings .link-wrap a {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #222;
+    text-decoration: none;
+    border-bottom: 1px solid #222;
+    padding-bottom: 5px;
+    transition: all 0.3s ease;
+}
+
+.rb-wiso-area .headings .link-wrap a:hover {
+    color: #999;
+    border-bottom-color: #999;
+}
+
+/* ============================================
+   4. COLOR SECTIONS
+   ============================================ */
+.rb-wiso-area .color_section {
+    background-color: #f8f8f8;
+    padding: 60px 0;
+}
+
+/* ============================================
+   5. PORTFOLIO GRID (Bootstrap estático)
+   ============================================ */
+.rb-wiso-area .rb-portfolio-grid {
+    position: relative;
+    width: 100%;
+}
+
+.rb-wiso-area .rb-portfolio-item {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* Aspect ratio 1:1 */
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rb-wiso-area .rb-portfolio-item:hover .rb-item-image img {
+    transform: scale(1.1);
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    z-index: 2;
+}
+
+.rb-wiso-area .rb-portfolio-item:hover .rb-item-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 3;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.rb-wiso-area .rb-portfolio-item:hover .rb-item-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-title a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-title a:hover {
+    opacity: 0.8;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.rb-wiso-area .rb-portfolio-item .rb-item-link:hover .rb-item-title {
+    opacity: 0.9;
+}
+
+/* ============================================
+   6. PORTFOLIO MASONRY (Bootstrap estático)
+   ============================================ */
+.rb-wiso-area .rb-portfolio-masonry {
+    position: relative;
+    width: 100%;
+}
+
+.rb-wiso-area .rb-masonry-item {
+    position: relative;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; /* Aspect ratio 4:3 */
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rb-wiso-area .rb-masonry-item:hover .rb-item-image img {
+    transform: scale(1.1);
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    z-index: 2;
+}
+
+.rb-wiso-area .rb-masonry-item:hover .rb-item-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-category {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-category a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-title a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.rb-wiso-area .rb-masonry-item .rb-item-title a:hover {
+    opacity: 0.8;
+}
+
+/* ============================================
+   7. POSTS GRID (Bootstrap estático)
+   ============================================ */
+.rb-wiso-area .rb-posts-grid {
+    position: relative;
+    width: 100%;
+}
+
+.rb-wiso-area .rb-post-item {
+    position: relative;
+    margin-bottom: 50px;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-inner {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.66%; /* Aspect ratio 3:2 */
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rb-wiso-area .rb-post-item:hover .rb-item-image img {
+    transform: scale(1.1);
+}
+
+.rb-wiso-area .rb-post-item .rb-item-content {
+    padding: 30px;
+    background: #fff;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-date {
+    display: block;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-date i {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 300;
+    color: #222;
+    display: block;
+    line-height: 1;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-category {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-category a {
+    color: #999;
+    text-decoration: none;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-category a:hover {
+    color: #222;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-title {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    color: #222;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-title a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.rb-wiso-area .rb-post-item .rb-item-title a:hover {
+    color: #999;
+}
+
+/* ============================================
+   8. SEPARATOR
+   ============================================ */
+.rb-wiso-area .separator {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.rb-wiso-area .separator .sep_holder {
+    display: inline-block;
+    width: 45%;
+    vertical-align: middle;
+}
+
+.rb-wiso-area .separator .sep_line {
+    display: block;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+/* ============================================
+   9. BOTÕES
+   ============================================ */
+.rb-wiso-area .button-wrapper {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.rb-wiso-area .a-btn-3 {
+    display: inline-block;
+    padding: 12px 40px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #222;
+    text-decoration: none;
+    border: 1px solid #222;
+    transition: all 0.3s ease;
+}
+
+.rb-wiso-area .a-btn-3:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+/* ============================================
+   9. REVISTAS GRID
+   ============================================ */
+.rb-wiso-area .rb-revistas-grid {
+    position: relative;
+    width: 100%;
+}
+
+.rb-wiso-area .rb-revista-item {
+    position: relative;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-revista-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rb-wiso-area .rb-revista-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.rb-wiso-area .rb-revista-image {
+    position: relative;
+    width: 100%;
+    padding-bottom: 140%; /* Aspect ratio para capas de revista (aproximadamente) */
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.rb-wiso-area .rb-revista-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.rb-wiso-area .rb-revista-item:hover .rb-revista-image img {
+    transform: scale(1.05);
+}
+
+.rb-wiso-area .rb-revista-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s ease;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rb-wiso-area .rb-revista-item:hover .rb-revista-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.rb-wiso-area .rb-revista-icon {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s ease;
+}
+
+.rb-wiso-area .rb-revista-item:hover .rb-revista-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.rb-wiso-area .rb-revista-icon i {
+    font-size: 48px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================
+   10. RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 991px) {
+    .rb-wiso-area .headings .title {
+        font-size: 32px;
+    }
+    
+    .rb-wiso-area .headings .subtitle {
+        font-size: 15px;
+    }
+    
+    .rb-wiso-area .margin-lg-105b { margin-bottom: 80px; }
+    .rb-wiso-area .margin-lg-100t { margin-top: 80px; }
+    .rb-wiso-area .margin-lg-100b { margin-bottom: 80px; }
+    .rb-wiso-area .margin-lg-90b { margin-bottom: 70px; }
+}
+
+@media (max-width: 767px) {
+    .rb-wiso-area .headings .title {
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+    
+    .rb-wiso-area .headings .subtitle {
+        font-size: 14px;
+    }
+    
+    .rb-wiso-area .headings .icon {
+        max-width: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .rb-wiso-area .color_section {
+        padding: 40px 0;
+    }
+    
+    .rb-wiso-area .rb-portfolio-item,
+    .rb-wiso-area .rb-masonry-item,
+    .rb-wiso-area .rb-post-item,
+    .rb-wiso-area .rb-revista-item {
+        margin-bottom: 30px;
+    }
+    
+    .rb-wiso-area .rb-revista-image {
+        padding-bottom: 130%;
+    }
+    
+    .rb-wiso-area .rb-revista-icon i {
+        font-size: 36px;
+    }
+    
+    .rb-wiso-area .separator {
+        margin: 30px 0;
+    }
+    
+    .rb-wiso-area .separator .sep_holder {
+        width: 40%;
+    }
+}
+

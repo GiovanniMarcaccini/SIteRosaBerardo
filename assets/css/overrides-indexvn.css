@@ -1,0 +1,182 @@
+/* ============================================
+   OVERRIDE CSS - indexvn.html
+   Efeito de Background Desfocado (Modesto)
+   ============================================
+   Este arquivo aplica apenas no /site/pages/indexvn.html
+   Não modifica o comportamento do CSS original
+   ============================================ */
+
+/* ================================
+   SECTION — A CINEASTA (AJUSTES)
+================================ */
+
+/* Fundo branco e posicionamento */
+#a-cineasta {
+    background: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+/* Espaço ANTES da section (afasta da galeria) */
+.rb-home-section--cineasta {
+    margin-top: 80px;
+}
+
+/* Bloco do título */
+.rb-home-section--cineasta .container {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+/* Título */
+.rb-home-section--cineasta .h4 {
+    max-width: 760px;        /* controla largura do texto */
+    margin: 0 auto;          /* centraliza */
+    line-height: 1.5;
+}
+
+/* Botão */
+.rb-home-section--cineasta .buttons-align-wrapper {
+    margin-top: 25px;
+}
+
+/* Espaço entre header da section e o primeiro bloco */
+.rb-home-section--cineasta .empty-space.col-xs-b40 {
+    margin-bottom: 40px;
+}
+
+/* Background images */
+#a-cineasta .entry.full-size {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .rb-home-section--cineasta {
+        margin-top: 50px;
+    }
+
+    .rb-home-section--cineasta .container {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
+  
+/* ============================================
+   1. POSICIONAMENTO E EMPILHAMENTO
+   ============================================ */
+
+/* Garantir que background fique fixo na viewport e atrás de tudo */
+.homepage-1-backgrounds {
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+  .homepage-1-container {
+    position: relative;
+    z-index: 2;
+  }
+/* ============================================
+   2. EFEITO BLUR E TRANSFORMAÇÕES
+   ============================================ */
+
+/* Aplicar blur e ajustes nos backgrounds */
+.homepage-1-backgrounds .entry {
+    position: absolute !important;
+    inset: 0 !important;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    transform: scale(1.1) !important;
+    -webkit-transform: scale(1.1) !important;
+    opacity: 0;
+    transition: opacity 0.8s ease-out, 
+                transform 0.8s ease-out, 
+                filter 0.8s ease-out;
+    -webkit-transition: opacity 0.8s ease-out, 
+                        -webkit-transform 0.8s ease-out, 
+                        -webkit-filter 0.8s ease-out;
+    will-change: opacity, transform, filter;
+}
+
+/* Background ativo: menos blur, mais opaco */
+.homepage-1-backgrounds .entry.active {
+    opacity: 1 !important;
+    filter: blur(6px);
+    -webkit-filter: blur(6px);
+    transform: scale(1) !important;
+    -webkit-transform: scale(1) !important;
+}
+
+/* ============================================
+   3. OVERLAY SUAVE (efeito "lavado")
+   ============================================ */
+
+/* Overlay branco suave para dar efeito "lavado" na imagem */
+.homepage-1-backgrounds .entry::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Overlay mais intenso no background ativo */
+.homepage-1-backgrounds .entry.active::after {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   4. RESPONSIVIDADE
+   ============================================ */
+
+/* Tablets: blur moderado */
+@media (max-width: 991px) {
+    .homepage-1-backgrounds .entry {
+        filter: blur(6px);
+        -webkit-filter: blur(6px);
+    }
+    .homepage-1-backgrounds .entry.active {
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+    }
+}
+
+/* Mobile: blur reduzido para performance */
+@media (max-width: 767px) {
+    .homepage-1-backgrounds .entry {
+        filter: blur(4px);
+        -webkit-filter: blur(4px);
+        transform: scale(1.05) !important;
+        -webkit-transform: scale(1.05) !important;
+    }
+    .homepage-1-backgrounds .entry.active {
+        filter: blur(3px);
+        -webkit-filter: blur(3px);
+        transform: scale(1) !important;
+        -webkit-transform: scale(1) !important;
+    }
+    
+    /* Overlay mais suave no mobile */
+    .homepage-1-backgrounds .entry::after {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    .homepage-1-backgrounds .entry.active::after {
+        background: rgba(255, 255, 255, 0.15);
+    }
+}
+
+/* ============================================
+   5. OTIMIZAÇÕES DE PERFORMANCE
+   ============================================ */
+
+/* Acelerar composição GPU */
+.homepage-1-backgrounds .entry {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+}
+

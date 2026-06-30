@@ -1,0 +1,348 @@
+/* ============================================
+   CSS ISOLADO - CONTATO WISO
+   ============================================
+   Todo CSS escopado dentro de .rb-contato-area e .rb-contato-page
+   Não afeta outras sections do site
+   ============================================ */
+
+/* ============================================
+   1. WRAPPER PRINCIPAL
+   ============================================ */
+.rb-contato-area {
+    position: relative;
+    width: 100%;
+    background-color: #1a1a1a; /* Fundo escuro como no Modesto */
+    color: #fff;
+}
+
+.rb-contato-area .h2.light,
+.rb-contato-area .h4.light,
+.rb-contato-area .simple-article.light {
+    color: #fff;
+}
+
+.rb-contato-area .simple-article.transparent {
+    opacity: 0.9;
+}
+
+.rb-contato-page {
+    position: relative;
+    width: 100%;
+}
+
+/* ============================================
+   2. CONTACTS WRAPPER (HOME)
+   ============================================ */
+.rb-contato-area .contacts-wrapper-1 {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    padding: 0;
+}
+
+.rb-contato-area .header-empty-space {
+    height: 80px; /* Espaço para header fixo */
+}
+
+.rb-contato-area .contacts-entry {
+    text-align: left;
+}
+
+.rb-contato-area .contacts-entry .h4 {
+    margin-bottom: 15px;
+}
+
+.rb-contato-area .contacts-entry .simple-article {
+    line-height: 1.8;
+}
+
+.rb-contato-area .contacts-entry a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.rb-contato-area .contacts-entry a:hover {
+    opacity: 0.7;
+}
+
+.rb-contato-area .follow {
+    display: flex;
+    gap: 15px;
+}
+
+.rb-contato-area .follow .entry {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.rb-contato-area .follow .entry:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.rb-contato-area .button.type-3 {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.rb-contato-area .button.type-3:hover {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+/* Responsivo para home */
+@media (max-width: 767px) {
+    .rb-contato-area .contacts-entry {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+/* ============================================
+   2.1. MAPA NA HOME
+   ============================================ */
+.rb-contato-area .map-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.rb-contato-area .map-placeholder {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rb-contato-area .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Ajuste de altura responsivo */
+@media (max-width: 767px) {
+    .rb-contato-area .map-placeholder {
+        height: 300px !important;
+    }
+}
+
+/* ============================================
+   3. HERO COM FORMULÁRIO (PÁGINA FULL)
+   ============================================ */
+.rb-contato-page .container-full {
+    position: relative;
+    width: 100%;
+}
+
+.rb-contato-page .hero {
+    position: relative;
+    width: 100%;
+}
+
+.rb-contato-page .contacts-info-wrap {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+}
+
+.rb-contato-page .contacts-info-wrap.parallax_info {
+    overflow: hidden;
+}
+
+.rb-contato-page .content-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.rb-contato-page .image-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.rb-contato-page .content {
+    position: relative;
+    z-index: 2;
+    padding: 120px 20px 80px;
+    text-align: center;
+    color: #fff;
+}
+
+.rb-contato-page .title-main {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.rb-contato-page .text {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rb-contato-page .form-wrap {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.rb-contato-page .contact-form-wiso {
+    text-align: left;
+}
+
+.rb-contato-page .contact-form-wiso .form-control-wrap {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.rb-contato-page .contact-form-wiso input[type="text"],
+.rb-contato-page .contact-form-wiso input[type="email"],
+.rb-contato-page .contact-form-wiso textarea {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.rb-contato-page .contact-form-wiso input[type="text"]:focus,
+.rb-contato-page .contact-form-wiso input[type="email"]:focus,
+.rb-contato-page .contact-form-wiso textarea:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.rb-contato-page .contact-form-wiso input[type="text"]::placeholder,
+.rb-contato-page .contact-form-wiso input[type="email"]::placeholder,
+.rb-contato-page .contact-form-wiso textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.rb-contato-page .contact-form-wiso textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.rb-contato-page .contact-form-wiso input[type="submit"] {
+    margin-top: 10px;
+    padding: 15px 40px;
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rb-contato-page .contact-form-wiso input[type="submit"]:hover {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+/* ============================================
+   4. INFORMAÇÕES ADICIONAIS (PÁGINA FULL)
+   ============================================ */
+.rb-contato-page .contacts-info-wrap.custom_info {
+    background-color: #fff;
+    padding: 80px 0;
+}
+
+.rb-contato-page .additional-content-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.rb-contato-page .content-items {
+    padding-left: 40px;
+}
+
+.rb-contato-page .content-item {
+    margin-bottom: 30px;
+}
+
+.rb-contato-page .content-item .title {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.rb-contato-page .content-item .address,
+.rb-contato-page .content-item .email {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #666;
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.rb-contato-page .content-item .email:hover {
+    color: #007bff;
+}
+
+.rb-contato-page .text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+}
+
+/* Responsivo para página full */
+@media (max-width: 767px) {
+    .rb-contato-page .title-main {
+        font-size: 32px;
+    }
+    
+    .rb-contato-page .content {
+        padding: 100px 20px 60px;
+    }
+    
+    .rb-contato-page .content-items {
+        padding-left: 0;
+        margin-top: 40px;
+    }
+}
+
+/* ============================================
+   5. MAPA PLACEHOLDER
+   ============================================ */
+.rb-contato-page .map-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.rb-contato-page .map-placeholder {
+    position: relative;
+    width: 100%;
+}
+

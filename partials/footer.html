@@ -1,0 +1,91 @@
+<footer class="rb-footer-zeo">
+    <!-- Overlay escuro para legibilidade -->
+    <div class="rb-footer-overlay"></div>
+    
+    <!-- Conteúdo centralizado -->
+    <div class="rb-footer-content">
+        <div class="container">
+            <!-- Logo centralizada -->
+            <div class="rb-footer-logo">
+                <a href="#" id="rb-footer-logo-link" aria-label="Ir para a Home">
+                    <img src="" id="rb-footer-logo-img" alt="Rosa Berardo - Logo">
+                </a>
+            </div>
+            
+            <!-- Ícones sociais -->
+            <div class="rb-footer-social">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                    <i class="fa fa-pinterest-p"></i>
+                </a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </div>
+            
+            <!-- Linha divisória -->
+            <div class="rb-footer-line"></div>
+            
+            <!-- Copyright -->
+            <div class="rb-footer-copyright">
+                <p>&copy; <span id="rb-footer-year">2025</span> Rosa Berardo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Botão voltar ao topo -->
+    <button class="rb-scroll-top" aria-label="Voltar ao topo" id="rb-scroll-top-btn">
+        <i class="fa fa-angle-up"></i>
+    </button>
+</footer>
+
+<script>
+// Atualizar ano automaticamente e ajustar paths
+(function() {
+    // Detectar path base (raiz ou /pages/)
+    var basePath = window.location.pathname.includes('/pages/') ? '../' : '';
+    
+    // Ajustar logo e link
+    var logoImg = document.getElementById('rb-footer-logo-img');
+    var logoLink = document.getElementById('rb-footer-logo-link');
+    if (logoImg) {
+        logoImg.src = basePath + 'assets/img/fotos-originais/novalogo_paraMudarCor.png';
+    }
+    if (logoLink) {
+        logoLink.href = basePath + (basePath ? '../index.html' : 'index.html');
+    }
+    
+    // Atualizar ano
+    var yearEl = document.getElementById('rb-footer-year');
+    if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+    }
+    
+    // Botão voltar ao topo
+    var scrollTopBtn = document.getElementById('rb-scroll-top-btn');
+    if (scrollTopBtn) {
+        // Mostrar/esconder botão baseado no scroll
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll suave ao clicar
+        scrollTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+})();
+</script>

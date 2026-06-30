@@ -1,0 +1,99 @@
+/* CSS isolado para a seção OUR PHILOSOPHY do Wiso */
+.rb-wiso-philosophy {
+    position: relative;
+    width: 100%;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+.rb-wiso-philosophy .container {
+    position: relative;
+}
+
+.rb-wiso-philosophy .headings-wrap {
+    position: relative;
+    width: 100%;
+}
+
+.rb-wiso-philosophy .headings.text_link {
+    text-align: center;
+    position: relative;
+}
+
+.rb-wiso-philosophy .headings.text_link .icon {
+    display: block;
+    margin: 0 auto 30px;
+    max-width: 200px;
+    height: auto;
+}
+
+.rb-wiso-philosophy .headings.text_link .title {
+    font-family: 'Droid Serif', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin: 0 0 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.rb-wiso-philosophy .headings.text_link .subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #666;
+    margin: 0 auto 40px;
+    max-width: 800px;
+    font-weight: 300;
+}
+
+.rb-wiso-philosophy .headings.text_link .link-wrap {
+    margin-top: 40px;
+}
+
+.rb-wiso-philosophy .headings.text_link .link-wrap a {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2c2c2c;
+    text-decoration: none;
+    border-bottom: 1px solid #2c2c2c;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.rb-wiso-philosophy .headings.text_link .link-wrap a:hover {
+    color: #999;
+    border-bottom-color: #999;
+}
+
+/* Efeito load-fade */
+.rb-wiso-philosophy .headings-wrap.load-fade {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .rb-wiso-philosophy .headings.text_link .title {
+        font-size: 32px;
+    }
+    
+    .rb-wiso-philosophy .headings.text_link .subtitle {
+        font-size: 14px;
+        padding: 0 20px;
+    }
+}

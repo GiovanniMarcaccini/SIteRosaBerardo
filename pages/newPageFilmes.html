@@ -1,0 +1,1274 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/fonts/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="assets/fonts/elegant-fonts.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/jquery.scrollbar.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style2.css" type="text/css">
+    <link rel="shortcut icon" href="https://www.rosaberardo.com.br/wp-content/uploads/2018/05/favicon.png#312" type="image/x-icon">
+    <title>Filmografia - Rosa Berardo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #d9d0d0;
+            background: radial-gradient(circle, rgba(217, 208, 208, 1) 0%, rgba(79, 117, 161, 1) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0 40px;
+            color: #2c2c2c;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
+            color: #1a1a1a;
+            font-family: "Plafair Display" !important;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            color: #4a4a4a;
+            font-family: "Work Suns" !important;
+        }
+
+        .intro-text {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            color: #5a5a5a;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.8);
+            color: #4a4a4a;
+            border: 2px solid rgba(180, 180, 180, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: rgb(250, 93, 8);
+            border-color: rgb(250, 93, 8);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #2c2c2c;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .films-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .film-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease-out both;
+            opacity: 1;
+            border: 1px solid rgba(220, 220, 220, 0.3);
+        }
+
+        .film-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(250, 93, 8, 0.15);
+            border-color: rgba(250, 93, 8, 0.2);
+        }
+
+        .film-card.hidden {
+            display: none;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .film-card:hover .video-thumbnail {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(42, 42, 42, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            z-index: 10;
+        }
+
+        .play-overlay:hover {
+            background: rgb(250, 93, 8);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .youtube-player {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .video-thumbnail.hidden,
+        .play-overlay.hidden {
+            display: none;
+        }
+
+        .film-info {
+            padding: 25px;
+        }
+
+        .film-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .film-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2c2c2c;
+            margin-bottom: 5px;
+        }
+
+        .film-year {
+            color: #6a6a6a;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .film-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .film-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            background: #f5f5f5;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #6a6a6a;
+            border: 1px solid #e0e0e0;
+        }
+
+        .watch-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgb(250, 93, 8);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(250, 93, 8, 0.3);
+        }
+
+        .watch-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(250, 93, 8, 0.4);
+            background: rgba(250, 93, 8, 0.9);
+        }
+
+        .youtube-icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgb(250, 93, 8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(250, 93, 8, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(250, 93, 8, 0.4);
+            background: rgba(250, 93, 8, 0.9);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            color: rgba(74, 74, 74, 0.8);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .films-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 35px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .films-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .filters {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-container {
+                height: 200px;
+            }
+
+            .film-info {
+                padding: 20px;
+            }
+
+            .film-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <div class="loading-overlay"></div>
+
+        <div class="off-screen-navigation">
+            <ul class="nav">
+                <li>
+                    <a href="#" class="new-window" data-toggle="modal" data-target="#modal-blog">
+                        <i class="fa fa-user"></i>
+                        <span>A cineasta.</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#services">
+                        <i class="fa fa-briefcase"></i>
+                        <span>Filmografia</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="1" class="next">
+                        <i class="fa fa-money"></i>
+                        <span>Fotografias</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="new-window" data-toggle="modal" data-target="#modal-revistas">
+                        <i class="fa fa-pencil"></i>
+                        <span>Revista</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="new-window" data-toggle="modal" data-target="#modal-imprensa">
+                        <i class="fa fa-money"></i>
+                        <span>Imprensa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contato">
+                        <i class="fa fa-envelope"></i>
+                        <span>Contato</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!--end off-screen-navigation-->
+
+        <nav class="navigation">
+            <a href="#" class="nav-btn ml-4">
+                <i></i>
+                <i></i>
+                <i></i>
+            </a>
+            <!--end nav-btn-->
+            <div class="brand">
+                <a href="index.html">
+                    <img src="assets/img/logodr.png" alt="">
+                </a>
+            </div>
+            <!--end brand-->
+        </nav>
+
+        <header>
+
+
+            <div class="container">
+                <h1 class="titulo">Filmografia</h1>
+                <!-- <p class="subtitulo">Curtas-Metragens</p> -->
+                <p class="intro-text subtitulo">
+                    Uma coleção de histórias cinematográficas que exploram a condição humana através de narrativas íntimas e visuais marcantes.
+                </p>
+
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterFilms('all')">Todos</button>
+                    <button class="filter-btn" onclick="filterFilms('Curta de Ficcao')">Curta de Ficção</button>
+                    <button class="filter-btn" onclick="filterFilms('Documentario')">Documentário</button>
+                    <button class="filter-btn" onclick="filterFilms('Animação-de-curta-metragem')">Animação de curta-metragem</button>
+                    <!-- <button class="filter-btn" onclick="filterFilms('drama')">Drama</button>
+                <button class="filter-btn" onclick="filterFilms('experimental')">Experimental</button> -->
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+                <!-- Seção: Trabalhos Recentes -->
+                <section class="section">
+                    <h2 class="section-title titulo"></h2>
+                    <div class="films-grid">
+                        <!-- Um Sol de Jacaré 2020 -->
+                        <article class="film-card" data-year="2024" data-genre="Curta de Ficcao">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/bfPfpGFKh9o?wmode=opaque&amp;rel=0&amp;enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">Um Sol de Jacaré</h3>
+                                    </div>
+                                    <span class="film-year">2020</span>
+                                </div>
+                                <p class="film-description subtitulo">
+                                    Curta-metragem goiano, que aponta para uma reflexão sobre o problema do aquecimento do planeta e suas conseqüências globais.
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Curta de ficção</span>
+                                    <span class="detail-item">18'34"</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- A TRAVESSIA 2016 -->
+                        <article class="film-card" data-year="2024" data-genre="Curta de Ficcao">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/JrbI7Kz4kC0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">A TRAVESSIA</h3>
+                                    </div>
+                                    <span class="film-year">2016</span>
+                                </div>
+                                <p class="film-description">
+                                    Curta metragem de ficção baseado em fatos reais. Narra a história de uma família camponesa e a estranha relação entre eles. Filme de cunho psicanalítico.
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Curta de Ficção</span>
+                                    <span class="detail-item">19'50"</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Romaria do Vão do Moleque 2024-->
+                        <article class="film-card" data-year="2024" data-genre="Documentario">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/rOIsfK1-H1c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">Romaria do Vão do Moleque</h3>
+                                    </div>
+                                    <span class="film-year">2024</span>
+                                </div>
+                                <p class="film-description">
+                                    O Documentário Romaria do Vão do Moleque tem como objetivo mostrar a importância das tradições culturais do grupo étnico Kalunga, na construção e manutenção de sua identidade cultural. O reencontro anual de membros da comunidade Kalunga no Vão do Moleque faz com que os valores deste grupo permaneçam e sejam transmitidos de geração a geração.
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Documentário</span>
+                                    <span class="detail-item"> 18'47"</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Romãozinho 2020 -->
+                        <article class="film-card" data-year="2024" data-genre="Curta de Ficcao">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/fM7fDDXom6I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">Romãozinho</h3>
+                                    </div>
+                                    <span class="film-year">2020</span>
+                                </div>
+                                <p class="film-description">
+                                    Filme adaptado de uma lenda popular goiana sobre o personagem Romãozinho.
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Curta de ficção</span>
+                                    <span class="detail-item">20'53</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Meninos Verdes 2019 -->
+                        <article class="film-card" data-year="2024" data-genre="Animação-de-curta-metragem">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/wck5xENxAT4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">Meninos Verdes</h3>
+                                    </div>
+                                    <span class="film-year">2019</span>
+                                </div>
+                                <p class="film-description">
+                                    Curta metragem em animação adaptado da obra homônima da escritora Cora Coralina, de cunho ambiental.
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Animação de curta-metragem</span>
+                                    <span class="detail-item">9'48</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+
+                        <!-- Hip Hop 2014 -->
+                        <article class="film-card" data-year="2024" data-genre="Documentario">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/EmNAaJthY4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">Hip Hop</h3>
+                                    </div>
+                                    <span class="film-year">2014</span>
+                                </div>
+                                <p class="film-description">
+                                    Documentário sobre o Hip-Hop em Goiânia e sua importância social e cultural. Este video mostra a historia e a importância do Hip Hop como movimento cultural e social, esclarecendo pontos importantes sobre como o hip-hop tem sido instrumento de inclusão social de jovens de todas as classes sociais. Registra ainda o movimento em Goiânia, como e quando surgiu e quem sao seus precursores.
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Documentário</span>
+                                    <span class="detail-item"> 20'25"</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- ABÁ -->
+                        <article class="film-card" data-year="2024" data-genre="Documentario">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/didAG8lu5OE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">ABÁ</h3>
+                                    </div>
+                                    <span class="film-year">2016</span>
+                                </div>
+                                <p class="film-description">
+                                    Documentário sobre a diáspora africana e a chegada dos afrodescendentes ao Estado de Goiás..
+                                <div class="film-details">
+                                    <span class="detail-item">Documentário</span>
+                                    <span class="detail-item">70'07</span>
+                                    <span class="detail-item">4K</span>
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Filme 8 -->
+                        <article class="film-card" data-year="2024" data-genre="Animação-de-curta-metragem">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/EE0l3R4lpw4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">A Infância de Aninha</h3>
+                                    </div>
+                                    <span class="film-year">2012</span>
+                                </div>
+                                <p class="film-description">
+                                    Filme de animação baseado nos poemas da escritora Cora Coralina que reconstitui sua infância com enfoque em sua relação familiar e social na cidade de Goiás
+                                </p>
+                                <div class="film-details">
+                                    <span class="detail-item">Animação de curta-metragem</span>
+                                    <span class="detail-item">10'21</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+
+
+                        <!-- Filme 9 -->
+                        <article class="film-card" data-year="2024" data-genre="Animação-de-curta-metragem">
+                            <div class="video-container responsive-video" id="video-container-1">
+                                <div class="">
+                                    <iframe width="100%" height="200" src="https://www.youtube.com/embed/CmmqrWP9ABA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                                    </iframe>
+                                </div>
+
+                            </div>
+                            <div class="film-info">
+                                <div class="film-header">
+                                    <div>
+                                        <h3 class="film-title">A Chegada de Aninha</h3>
+                                    </div>
+                                    <span class="film-year">2024</span>
+                                </div>
+                                <p class="film-description">
+
+                                    Curta metragem de animação sobre a infância de Cora Coralina.
+                                <div class="film-details">
+                                    <span class="detail-item">Animação de curta-metragem</span>
+                                    <span class="detail-item"> 11'09"</span>
+
+                                </div>
+                                <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                    <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                    </svg>
+                                    Assistir no YouTube
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Seção: Trabalhos de 2023 -->
+                <!-- <section class="section">
+                <h2 class="section-title">Trabalhos de 2023</h2>
+                <div class="films-grid">
+                   
+                    <article class="film-card" data-year="2023" data-genre="drama">
+                        <div class="video-container" id="video-container-4">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Thumbnail do filme" class="video-thumbnail" id="thumbnail-4" loading="lazy">
+                            <button class="play-overlay" id="play-btn-4" onclick="playVideo('dQw4w9WgXcQ', 4)">
+                                ▶
+                            </button>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-header">
+                                <div>
+                                    <h3 class="film-title">Silêncios</h3>
+                                </div>
+                                <span class="film-year">2023</span>
+                            </div>
+                            <p class="film-description">
+                                piroca lorando o que não é dito nas relações humanas.
+                            </p>
+                            <div class="film-details">
+                                <span class="detail-item">Drama</span>
+                                <span class="detail-item">20 min</span>
+                                <span class="detail-item">HD</span>
+                            </div>
+                            <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="film-card" data-year="2023" data-genre="drama">
+                        <div class="video-container" id="video-container-4">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Thumbnail do filme" class="video-thumbnail" id="thumbnail-4" loading="lazy">
+                            <button class="play-overlay" id="play-btn-4" onclick="playVideo('dQw4w9WgXcQ', 4)">
+                                ▶
+                            </button>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-header">
+                                <div>
+                                    <h3 class="film-title">Silêncios</h3>
+                                </div>
+                                <span class="film-year">2023</span>
+                            </div>
+                            <p class="film-description">
+                                Uma obra sensível sobre comunicação e isolamento, explorando o que não é dito nas relações humanas.
+                            </p>
+                            <div class="film-details">
+                                <span class="detail-item">Drama</span>
+                                <span class="detail-item">20 min</span>
+                                <span class="detail-item">HD</span>
+                            </div>
+                            <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="film-card" data-year="2023" data-genre="drama">
+                        <div class="video-container" id="video-container-6">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Thumbnail do filme" class="video-thumbnail" id="thumbnail-6" loading="lazy">
+                            <button class="play-overlay" id="play-btn-6" onclick="playVideo('dQw4w9WgXcQ', 6)">
+                                ▶
+                            </button>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-header">
+                                <div>
+                                    <h3 class="film-title">Encontros</h3>
+                                </div>
+                                <span class="film-year">2023</span>
+                            </div>
+                            <p class="film-description">
+                                História sobre conexões inesperadas e como pequenos momentos podem transformar vidas inteiras.
+                            </p>
+                            <div class="film-details">
+                                <span class="detail-item">Drama</span>
+                                <span class="detail-item">16 min</span>
+                                <span class="detail-item">HD</span>
+                            </div>
+                            <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Trabalhos de 2023</h2>
+                <div class="films-grid">
+ 
+                    <article class="film-card" data-year="2023" data-genre="drama">
+                        <div class="video-container" id="video-container-4">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Thumbnail do filme" class="video-thumbnail" id="thumbnail-4" loading="lazy">
+                            <button class="play-overlay" id="play-btn-4" onclick="playVideo('dQw4w9WgXcQ', 4)">
+                                ▶
+                            </button>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-header">
+                                <div>
+                                    <h3 class="film-title">Silêncios</h3>
+                                </div>
+                                <span class="film-year">2023</span>
+                            </div>
+                            <p class="film-description">
+                                piroca lorando o que não é dito nas relações humanas.
+                            </p>
+                            <div class="film-details">
+                                <span class="detail-item">Drama</span>
+                                <span class="detail-item">20 min</span>
+                                <span class="detail-item">HD</span>
+                            </div>
+                            <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </article>
+
+                 
+                    <article class="film-card" data-year="2023" data-genre="drama">
+                        <div class="video-container" id="video-container-4">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Thumbnail do filme" class="video-thumbnail" id="thumbnail-4" loading="lazy">
+                            <button class="play-overlay" id="play-btn-4" onclick="playVideo('dQw4w9WgXcQ', 4)">
+                                ▶
+                            </button>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-header">
+                                <div>
+                                    <h3 class="film-title">Silêncios</h3>
+                                </div>
+                                <span class="film-year">2023</span>
+                            </div>
+                            <p class="film-description">
+                                Uma obra sensível sobre comunicação e isolamento, explorando o que não é dito nas relações humanas.
+                            </p>
+                            <div class="film-details">
+                                <span class="detail-item">Drama</span>
+                                <span class="detail-item">20 min</span>
+                                <span class="detail-item">HD</span>
+                            </div>
+                            <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="film-card" data-year="2023" data-genre="drama">
+                        <div class="video-container" id="video-container-6">
+                            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Thumbnail do filme" class="video-thumbnail" id="thumbnail-6" loading="lazy">
+                            <button class="play-overlay" id="play-btn-6" onclick="playVideo('dQw4w9WgXcQ', 6)">
+                                ▶
+                            </button>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-header">
+                                <div>
+                                    <h3 class="film-title">Encontros</h3>
+                                </div>
+                                <span class="film-year">2023</span>
+                            </div>
+                            <p class="film-description">
+                                História sobre conexões inesperadas e como pequenos momentos podem transformar vidas inteiras.
+                            </p>
+                            <div class="film-details">
+                                <span class="detail-item">Drama</span>
+                                <span class="detail-item">16 min</span>
+                                <span class="detail-item">HD</span>
+                            </div>
+                            <a href="https://youtube.com/watch?v=dQw4w9WgXcQ" class="watch-btn" target="_blank" rel="noopener">
+                                <svg class="youtube-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section> -->
+            </div>
+        </main>
+
+        <div class="off-screen-content">
+            <div class="scrollbar-inner">
+                <section id="about-me">
+                    <div class="image-header">
+                        <div class="bg-transfer "><img style="width: 350px; height: 450px;" src="assets/img/bio_rosaberarardo.jpg" alt=""></div>
+                    </div>
+                    <div class="section-wrapper">
+                        <h2 class="titulo">A cineasta</h2>
+
+                        <h3></h3>
+
+                        <blockquote class="subtitulo">
+                            "Eu acredito na produção e no sucesso do cinema brasileiro. E mais do que isso… acredito na força do cinema e naqueles que querem investir e aprimorar o conhecimento sobre cinema e sua prática."
+                        </blockquote>
+                        <cite class="titulo">ROSA BERARDO</cite>
+                        <br>
+                        <br><br>
+                        <p class="subtitulo">
+                            Doutora em Cinema pela Sorbonne, França e Pós-doutora pela Université du Québec à Montreal. Cineasta, Jornalista, Fotógrafa e Professora
+                        </p>
+                        <p class="subtitulo">Em 2002, Rosa fundou a Primeira Escola de Cinema do Estado de Goiás, a SKÓPOS. E em 2010, criou a Casa do Cinema (Maison Du Cinema) para ser um ateliê de cinema, onde alunos pudessem aprender a realizar o sonho de fazer cinema em Goiás. A escola já formou mais de 80 novos cineastas e produtores de vídeos em Goiás. 07 curtas-metragens foram realizados por alunos da escola e várias produções goianas trazem a assinatura e parceria da escola. Muitos desses flmes receberam premiações em festivais nacionais e estaduais, como o Goiânia Mostra Curtas, além de exibições no FICA (Festival Internacional de Cinema Ambiental).</p>
+                        <img src="assets/img/signature-black.png" alt="">
+                    </div>
+                    <!--end section-wrapper-->
+                </section>
+                <!--end #about-me-->
+
+                <section id="services">
+                    <div class="section-wrapper">
+                        <h2 class="titulo">Filmografia</h2>
+
+                        <p></p>
+
+                        <a href="#">
+                            <div class="service">
+                                <div class="image">
+                                    <div class="bg-transfer"><img src="assets/img/umsoldejacare.jpg" alt=""></div>
+                                </div>
+                                <div class="description">
+                                    <h3>Um Sol de Jacaré</h3>
+
+                                    <p class="subtitulo">
+                                        Curta-metragem goiano, que aponta para uma reflexão sobre o problema do aquecimento do planeta e suas conseqüências globais.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <!--end service-->
+                        <a href="#">
+                            <div class="service">
+                                <div class="image">
+                                    <div class="bg-transfer"><img src="assets/img/travessia.jpg" alt=""></div>
+                                </div>
+                                <div class="description">
+                                    <h3 class="titulo">Travessia</h3>
+                                    <p class="subtitulo"><strong>Curta metragem de ficção baseado em fatos reais.</strong></p>
+                                    <br>
+                                    <p class="subtitulo">Narra a história de uma família camponesa e a estranha relação entre eles. Filme de cunho psicanalítico
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <!--end service-->
+                        <a href="#">
+                            <div class="service">
+                                <div class="image">
+                                    <div class="bg-transfer"><img src="assets/img/filmes/romaria.png" alt=""></div>
+                                </div>
+                                <div class="description">
+                                    <h3 class="titulo">Romaria do Vão do Moleque</h3>
+
+                                    <p class="subtitulo">
+                                        Documentário realizado junto ao grupo étnico Kalunga na região de Cavalcante.
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="newPageFilmes.html" class="btn btn-primary btn-small btn-default:focus">Veja Mais</a>
+                        <!--end service-->
+                    </div>
+                    <!--end section-wrapper-->
+                </section>
+                <!--end #services-->
+
+                <!--CONTATO-->
+                <section id="contato" class=" contato-section">
+                    <div class="section-wrapper">
+                        <h2 class="titulo">Contato</h2>
+                    </div>
+                    <div class="contato-box">
+
+                        <div class="card-contato">
+
+                            <span class="icon">💬</span>
+                            <h3 class="titulo">Formulário de Contato</h3>
+                            <p class="subtitulo">Use o formulário abaixo para enviar sua mensagem diretamente para Rosa Berardo.</p>
+                        </div>
+
+                        <div class="card-contato">
+                            <span class="icon">📧</span>
+                            <h3 class="titulo">Envie um E-mail</h3>
+                            <p class="subtitulo"><a href="mailto:contato@rosaberardo.com.br">contato@rosaberardo.com.br</a></p>
+                        </div>
+                    </div>
+                </section>
+                <!--FIM__D0__CONTATO-->
+                <!--FORM-->
+                <form class="form-contato" action="https://formspree.io/f/seuID" method="POST">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit">Enviar</button>
+                </form>
+                <!--FIM__DO__FORM-->
+
+                <!-- <section id="pricing">
+                    <div class="section-wrapper">
+                        <h2>Pricing</h2>
+
+                        <div class="price-package">
+                            <div class="price">$129</div>
+                            <div class="description">
+                                <h3>Basic Package</h3>
+
+                                <p>
+                                    Enean sit amet metus sodales, elementum ligula quis, facilisis neque. Sed eu purus ut mauris
+                                    malesuada viverra eu vitae eros.
+                                </p>
+                                <ul>
+                                    <li>Aenean pretium ex non leo aliquam</li>
+                                    <li>Sit amet porta urna interdum</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--end price-package-->
+
+                <!--<div class="price-package">
+                            <div class="price">$149</div>
+                            <div class="description">
+                                <h3>Advanced Package</h3>
+
+                                <p>
+                                    Cras ornare ligula quis ultrices fermentum. Maecenas finibus, sapien non suscipit luctus
+                                </p>
+                                <ul>
+                                    <li>Aenean pretium ex non leo aliquam</li>
+                                    <li>Sit amet porta urna interdum</li>
+                                    <li>In pretium euismod justo et porttitor</li>
+                                </ul>
+                            </div>
+                        </div>
+                        end price-package-->
+
+                <!-- <div class="price-package">
+                    <div class="price">$169</div>
+                    <div class="description">
+                        <h3>Professional Package</h3>
+
+                        <p>
+                            Phasellus in dolor sit amet lorem scelerisque sodales quis ut eros. Nullam elit dui, egestas
+                            vel tortor
+                        </p>
+                        <ul>
+                            <li>Aenean pretium ex non leo aliquam</li>
+                            <li>Sit amet porta urna interdum</li>
+                            <li>In pretium euismod justo et porttitor</li>
+                            <li>Sed eu purus ut mauris</li>
+                        </ul>
+                    </div>
+                </div> -->
+                <!--end price-package-->
+            </div>
+            <!--end section-wrapper-->
+            </section>
+            <!--end #pricing-->
+
+            <section id="contact">
+                <div id="map"></div>
+                <div class="section-wrapper">
+                    <h2>Contact</h2>
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <h3>Address</h3>
+                            <address>
+                                4758 Nancy Street
+                                <br>
+                                +1 919-571-2528
+                                <br>
+                                <a href="#">hello@example.com</a>
+                            </address>
+                        </div>
+                        <!--end col-sm-6-->
+                        <div class="col-md-6 col-sm-6">
+                            <h3>Social</h3>
+
+                            <div class="social">
+                                <figure><a href="" class="icon"><i class="fa fa-facebook"></i>Facebook</a></figure>
+                                <figure><a href="" class="icon"><i class="fa fa-twitter"></i>Twitter</a></figure>
+                                <figure><a href="" class="icon"><i class="fa fa-youtube"></i>Youtube</a></figure>
+                                <figure><a href="" class="icon"><i class="fa fa-pinterest"></i>Pinterest</a></figure>
+                            </div>
+                        </div>
+                        <!--end col-sm-6-->
+                    </div>
+                    <!--end row-->
+                    <br>
+
+                    <h3>Contact Form</h3>
+
+                    <form id="form-contact" method="post" class="form clearfix">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="form-contact-name" name="name" placeholder="Your Name" required>
+                                </div>
+                                <!--end form-group -->
+                            </div>
+                            <!--end col-md-6 col-sm-6 -->
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="form-contact-email" name="email" placeholder="Your Email" required>
+                                </div>
+                                <!--end form-group -->
+                            </div>
+                            <!--end col-md-6 col-sm-6 -->
+                        </div>
+                        <!--end row -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea class="form-control" id="form-contact-message" rows="8" name="message" placeholder="Your Message" required></textarea>
+                                </div>
+                                <!--end form-group -->
+                            </div>
+                            <!--end col-md-12 -->
+                        </div>
+                        <!--end row -->
+                        <div class="form-group clearfix">
+                            <button type="submit" class="btn pull-right btn-default btn-framed btn-rounded" id="form-contact-submit">Send a Message
+                            </button>
+                        </div>
+                        <!--end form-group -->
+                        <div class="form-contact-status"></div>
+                    </form>
+                    <!--end form-contact -->
+                </div>
+                <!--end section-wrapper-->
+            </section>
+            <!--end #contact-->
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="assets/js/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.scrollbar.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="assets/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/js/pace.min.js"></script>
+    <script type="text/javascript" src="assets/js/custom.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function ($) {
+            "use strict";
+
+
+
+        });
+
+        var latitude = 34.038405;
+        var longitude = -117.946944;
+        var markerImage = "assets/img/map-marker.png";
+        var mapTheme = "light";
+        var mapElement = "map";
+        google.maps.event.addDomListener(window, "load", simpleMap(latitude, longitude, markerImage, mapTheme, mapElement));
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+<script src="../assets/js/lang.js"></script>
+</body>
